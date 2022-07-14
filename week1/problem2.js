@@ -45,15 +45,3 @@ let arrayOfUrls = [
 //   'invalid url',
 //   populate: 'invalid url'
 // ]
-// shariqbinrashid@Shariqs-MacBook-Pro TintashBackendTraining % node ./week1/problem2.js
-// [
-//   { userId: 1, id: 1, title: 'delectus aut autem', completed: false },
-//   {
-//     userId: 1,
-//     id: 2,
-//     title: 'quis ut nam facilis et officia qui',
-//     completed: false
-//   },
-//   'invalid url',
-//   populatee: 'invalid url'
-// ]    
