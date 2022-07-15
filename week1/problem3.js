@@ -1,3 +1,8 @@
+// Problem 3
+//Write a function to sum the arguments based on below prototype:
+//sum(1)(2)(3);
+
+
 function sum(...args) {
 
     function add(...args2) {
