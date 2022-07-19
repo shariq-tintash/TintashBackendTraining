@@ -3,25 +3,27 @@
 //sum(1)(2)(3);
 
 
-function sum(...args) {
 
-    function add(...args2) {
-      return sum(...args, ...args2);
+let sum = (num) => {
+  let total = num;
+
+  return (subNum = (item) => {
+    if (item != undefined) {
+      total += item;
+      return subNum;
     }
-  
-    const curr = [...args].reduce((acc, curr) => acc + curr, 0);
-    add.value = curr;
-    return add;
-  }
+    return total;
+  });
+};
 
 
 
-console.log(sum(1).value);
-console.log(sum(1)(2).value);
-console.log(sum(1)(2)(3).value);
-console.log(sum(1)(2)(3)(4).value);
-console.log(sum(1)(2)(3)(4)(5).value);
-console.log(sum(1)(2)(3)(4)(5)(6).value);
+console.log(sum(1)());
+console.log(sum(1)(2)());
+console.log(sum(1)(2)(3)());
+console.log(sum(1)(2)(3)(4)());
+console.log(sum(1)(2)(3)(4)(5)());
+console.log(sum(1)(2)(3)(4)(5)(6)());
 
 // Output
 // 1
