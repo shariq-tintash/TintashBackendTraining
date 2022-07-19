@@ -75,7 +75,6 @@ const asyncPar = async (urls) => {
 
 
 let results = [];
-let executionTime={};
 
 async function main() {
   try {
@@ -87,69 +86,53 @@ async function main() {
     ];
 
     
-    let startTime;
-    let endTime;
-    let totalTime;
 
     // Serial Callbacks
-    startTime = new Date().getTime();
+
+    console.time("Serial Callbacks");
     results = [];
     results = await callbackSeq(urls, callbackSeq);
-    endTime = new Date().getTime();
-    totalTime = endTime - startTime;
-    executionTime['Serial Callbacks']=totalTime + " ms";
+    console.timeEnd("Serial Callbacks");
+
     console.log("Response: Serial Callbacks ");
     console.log(results);
 
 
     // Serial Promises
-    startTime = new Date().getTime();
+    console.time("Serial Promises");
     results = [];
     results = await promiseSeq(urls);
-    endTime = new Date().getTime();
-    totalTime = endTime - startTime;
-    executionTime['Serial Promises']=totalTime + " ms";
+    console.timeEnd("Serial Promises");
+
     console.log("Response: Serial Promises");
     console.log(results);
 
     // Parallel Promises
+    console.time("Parallel Promises");
     startTime = new Date().getTime();
     results = [];
     results = await promisePar(urls);
-    endTime = new Date().getTime();
-    totalTime = endTime - startTime;
-    executionTime['Parallel Promises']=totalTime + " ms";
-    console.log("Response: Parallel Promises");
+    console.timeEnd("Parallel Promises");
     console.log(results);
 
     // Serial Async await
-    startTime = new Date().getTime();
+    console.time("Serial Async await");
     results = [];
     results = await asyncSeq(urls);
-    endTime = new Date().getTime();
-    executionTime['Serial Async await']=totalTime + " ms";
+    console.timeEnd("Serial Async await");
+
     console.log("Response: Serial Async await ");
     console.log(results);
 
     // Parallel Async await
-    startTime = new Date().getTime();
+    console.time("Parallel Async await");
     results = [];
     results = await asyncPar(urls);
-    endTime = new Date().getTime();
-    totalTime = endTime - startTime;
-    executionTime['Parallel Async await']=totalTime + " ms";
+    console.timeEnd("Parallel Async await");
+
     console.log("Response: Parallel Async await ");
     results = results.map((res) => res);
     console.log(results);
-
-
-
-    console.log("Comparison Result with each type: ");
-    for (const item in executionTime) {
-        console.log(`\n Time taken to execute with ${item}: `);
-        console.log(executionTime[item])
-      }
-      
 
   } catch (error) {
     console.log(error);
